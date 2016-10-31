@@ -3,8 +3,9 @@ const app = express();
 var graphqlHTTP = require('express-graphql');
 var graphql = require('graphql');
 var graphQLSchema = require('./lib');
-
-graphQLSchema('./test/fixtures/petstore.json').then(schema => {
+var fs=require('fs')
+var schema='musixmatch.json';
+graphQLSchema('./test/fixtures/'+schema).then(schema => {
   app.use('/graphql', graphqlHTTP(() => {
     return {
       schema,
@@ -19,5 +20,6 @@ graphQLSchema('./test/fixtures/petstore.json').then(schema => {
     console.info(`http://localhost:3009/graphql`);
   });
 }).catch(e => {
+  console.log(e)
   throw e;
 });

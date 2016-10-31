@@ -1,7 +1,7 @@
 const graphQLSchema = require('../lib');
 
-describe('petstore schema', () => {
+describe('musixmatch schema', () => {
   it('converting', (done) => {
-    graphQLSchema(`${__dirname}/fixtures/petstore.json`).then(() => done()).catch(done)
+    graphQLSchema(`${__dirname}/fixtures/musixmatch.json`).then(() => done()).catch(done)
   });
 });

@@ -4,8 +4,13 @@ var graphqlHTTP = require('express-graphql');
 var graphql = require('graphql');
 var graphQLSchema = require('./lib');
 var fs=require('fs')
+var util=require('util')
 var schema='musixmatch.json';
 graphQLSchema('./test/fixtures/'+schema).then(schema => {
+		
+  schema=JSON.stringify( util.inspect( schema ));
+
+  fs.writeFileSync('./graphqlmxm.json', schema);
   app.use('/graphql', graphqlHTTP(() => {
     return {
       schema,
